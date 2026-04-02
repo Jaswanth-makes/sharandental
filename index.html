@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sharan Dental Clinic — Crafting Confident Smiles</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =============================================
+       CSS CUSTOM PROPERTIES & RESET
+    ============================================= */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --teal:       #0ABFBC;
+      --teal-dark:  #089490;
+      --teal-light: #d0f5f4;
+      --teal-glow:  rgba(10, 191, 188, 0.25);
+      --white:      #ffffff;
+      --ivory:      #f8f6f2;
+      --ivory-2:    #f0ede7;
+      --text-dark:  #1a1f2e;
+      --text-mid:   #4a5568;
+      --text-light: #8a96a3;
+      --glass-bg:   rgba(255,255,255,0.55);
+      --glass-border: rgba(255,255,255,0.75);
+      --shadow-soft: 0 8px 32px rgba(10,191,188,0.10);
+      --shadow-card: 0 4px 24px rgba(26,31,46,0.08);
+      --radius:     16px;
+      --radius-lg:  24px;
+      --nav-h:      72px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--ivory);
+      color: var(--text-dark);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: var(--teal);
+      color: #fff;
+    }
+
+    img { display: block; max-width: 100%; }
+    a  { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* =============================================
+       UTILITY
+    ============================================= */
+    .container {
+      width: min(1200px, 92%);
+      margin-inline: auto;
+    }
+
+    .section-label {
+      font-size: clamp(0.65rem, 1.2vw, 0.78rem);
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      line-height: 1.2;
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+      color: var(--text-mid);
+      max-width: 540px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      background: var(--teal);
+      color: #fff;
+      border-radius: 50px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+      box-shadow: 0 4px 20px var(--teal-glow);
+    }
+    .btn-primary:hover {
+      background: var(--teal-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px var(--teal-glow);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      background: transparent;
+      color: var(--text-dark);
+      border-radius: 50px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border: 2px solid rgba(26,31,46,0.18);
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .btn-ghost:hover {
+      border-color: var(--teal);
+      color: var(--teal);
+    }
+
+    /* =============================================
+       NAVBAR
+    ============================================= */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      background: rgba(248,246,242,0.72);
+      backdrop-filter: blur(18px) saturate(160%);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
+      border-bottom: 1px solid rgba(255,255,255,0.5);
+      box-shadow: 0 2px 20px rgba(10,191,188,0.07);
+      transition: background 0.3s;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    /* Logo */
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .nav-logo-icon {
+      width: 38px; height: 38px;
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 12px var(--teal-glow);
+      flex-shrink: 0;
+    }
+
+    .nav-logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+    .nav-logo-text strong {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+    .nav-logo-text span {
+      font-size: 0.68rem;
+      font-weight: 400;
+      color: var(--text-light);
+      letter-spacing: 0.06em;
+    }
+
+    /* Desktop nav links */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .nav-links a {
+      padding: 0.45rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-mid);
+      border-radius: 8px;
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--teal);
+      background: var(--teal-light);
+    }
+    .nav-links .nav-cta {
+      margin-left: 0.75rem;
+      padding: 0.5rem 1.35rem;
+      background: var(--teal);
+      color: #fff;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: background 0.25s, box-shadow 0.25s;
+      box-shadow: 0 3px 14px var(--teal-glow);
+    }
+    .nav-links .nav-cta:hover {
+      background: var(--teal-dark);
+      box-shadow: 0 5px 20px var(--teal-glow);
+    }
+
+    /* CSS-only hamburger */
+    .nav-toggle { display: none; }
+    .hamburger-label {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      z-index: 1100;
+    }
+    .hamburger-label span {
+      display: block;
+      width: 26px; height: 2px;
+      background: var(--text-dark);
+      border-radius: 4px;
+      transition: transform 0.3s, opacity 0.3s;
+      transform-origin: center;
+    }
+
+    /* Hamburger animation on check */
+    .nav-toggle:checked ~ .nav-inner .hamburger-label span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .nav-toggle:checked ~ .nav-inner .hamburger-label span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+    .nav-toggle:checked ~ .nav-inner .hamburger-label span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Mobile menu open */
+    .nav-toggle:checked ~ .nav-inner .nav-links {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    /* =============================================
+       HERO SECTION
+    ============================================= */
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: var(--nav-h);
+      background:
+        radial-gradient(ellipse 70% 60% at 80% 50%, rgba(10,191,188,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 20% 80%, rgba(10,191,188,0.08) 0%, transparent 60%),
+        linear-gradient(160deg, var(--white) 0%, var(--ivory) 60%, #e8f9f9 100%);
+    }
+
+    /* Decorative blobs */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -120px; right: -80px;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(10,191,188,0.13) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -100px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(10,191,188,0.09) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      padding-block: 5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--teal);
+      backdrop-filter: blur(8px);
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-soft);
+    }
+    .hero-badge::before {
+      content: '●';
+      font-size: 0.5rem;
+      animation: blink 1.8s ease-in-out infinite;
+    }
+    @keyframes blink {
+      0%,100% { opacity: 1; } 50% { opacity: 0.3; }
+    }
+
+    .hero-headline {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+      line-height: 1.12;
+      color: var(--text-dark);
+      margin-bottom: 1.25rem;
+    }
+    .hero-headline em {
+      font-style: italic;
+      color: var(--teal);
+    }
+
+    .hero-tagline {
+      font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+      color: var(--text-mid);
+      max-width: 440px;
+      margin-bottom: 2.5rem;
+      font-weight: 400;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 3.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(10,191,188,0.15);
+    }
+    .stat-item strong {
+      display: block;
+      font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+      font-weight: 700;
+      color: var(--teal);
+      line-height: 1;
+    }
+    .stat-item span {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      font-weight: 400;
+    }
+
+    /* Hero visual card */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero-card-main {
+      background: var(--glass-bg);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      box-shadow: 0 20px 60px rgba(10,191,188,0.15), 0 4px 20px rgba(26,31,46,0.07);
+      width: min(360px, 100%);
+      position: relative;
+      z-index: 2;
+      animation: heroCardFloat 6s ease-in-out infinite;
+    }
+    @keyframes heroCardFloat {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-12px); }
+    }
+
+    .hero-card-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .hero-card-main h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+    .hero-card-main p {
+      font-size: 0.875rem;
+      color: var(--text-mid);
+      margin-bottom: 1.5rem;
+    }
+
+    .card-progress {
+      margin-bottom: 0.4rem;
+    }
+    .card-progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--text-light);
+      margin-bottom: 0.4rem;
+    }
+    .progress-bar {
+      height: 6px;
+      background: var(--ivory-2);
+      border-radius: 50px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--teal), #54e0dd);
+      border-radius: 50px;
+    }
+
+    .floating-pill {
+      position: absolute;
+      background: var(--white);
+      border: 1px solid var(--glass-border);
+      border-radius: 50px;
+      padding: 0.55rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      box-shadow: 0 6px 24px rgba(26,31,46,0.1);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      white-space: nowrap;
+    }
+    .pill-1 {
+      top: -18px; right: -20px;
+      animation: float1 5s ease-in-out infinite;
+    }
+    .pill-2 {
+      bottom: 30px; left: -30px;
+      animation: float2 6s ease-in-out infinite;
+    }
+    @keyframes float1 { 0%,100%{transform:translateY(0) rotate(-2deg)} 50%{transform:translateY(-8px) rotate(2deg)} }
+    @keyframes float2 { 0%,100%{transform:translateY(0) rotate(1deg)} 50%{transform:translateY(8px) rotate(-2deg)} }
+
+    /* Hero entry animation */
+    .hero-content {
+      animation: heroFadeIn 0.9s ease both;
+    }
+    .hero-visual {
+      animation: heroFadeIn 0.9s 0.2s ease both;
+    }
+    @keyframes heroFadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* =============================================
+       SERVICES SECTION
+    ============================================= */
+    .services {
+      padding-block: 7rem;
+      background: var(--white);
+      position: relative;
+    }
+
+    .services::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(10,191,188,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .section-head {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .section-head .section-subtitle {
+      margin-inline: auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(240,237,231,0.6) 100%);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.8);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.75rem;
+      box-shadow: var(--shadow-card);
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      position: relative;
+      overflow: hidden;
+
+      /* Scroll animation */
+      animation: cardReveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 25%;
+    }
+    @keyframes cardReveal {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 100px; height: 100px;
+      background: radial-gradient(circle, rgba(10,191,188,0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      transform: translate(30%, -30%);
+      transition: transform 0.4s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(10,191,188,0.15);
+      border-color: rgba(10,191,188,0.3);
+    }
+    .service-card:hover::before {
+      transform: translate(15%, -15%) scale(1.3);
+    }
+
+    .service-icon {
+      width: 52px; height: 52px;
+      background: linear-gradient(135deg, var(--teal-light), rgba(10,191,188,0.2));
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+      border: 1px solid rgba(10,191,188,0.2);
+    }
+
+    .service-card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      color: var(--text-dark);
+    }
+
+    .service-card p {
+      font-size: 0.875rem;
+      color: var(--text-mid);
+      line-height: 1.65;
+    }
+
+    .service-tag {
+      display: inline-block;
+      margin-top: 1.25rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--teal);
+      background: var(--teal-light);
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+    }
+
+    /* =============================================
+       ABOUT SECTION
+    ============================================= */
+    .about {
+      padding-block: 7rem;
+      background: linear-gradient(160deg, var(--ivory) 0%, #e5f8f7 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about::before {
+      content: '';
+      position: absolute;
+      right: -200px; top: -200px;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(10,191,188,0.1) 0%, transparent 65%);
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-content {
+      animation: cardReveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 25%;
+    }
+
+    .about-content .section-subtitle {
+      margin-bottom: 1.25rem;
+      max-width: 100%;
+    }
+
+    .about-body {
+      font-size: 0.95rem;
+      color: var(--text-mid);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .about-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 2rem;
+    }
+    .about-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.4rem 1rem;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-dark);
+      backdrop-filter: blur(8px);
+    }
+    .about-pill::before { content: '✓'; color: var(--teal); font-weight: 700; }
+
+    /* About visual */
+    .about-visual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      animation: cardReveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 25%;
+    }
+
+    .about-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-card);
+      text-align: center;
+    }
+    .about-card:nth-child(1) { grid-column: 1 / -1; }
+
+    .about-card .big-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--teal);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .about-card .big-label {
+      font-size: 0.82rem;
+      color: var(--text-mid);
+      font-weight: 500;
+    }
+    .about-card .big-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    /* =============================================
+       CONTACT SECTION
+    ============================================= */
+    .contact {
+      padding-block: 7rem;
+      background: var(--white);
+    }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contact-info {
+      animation: cardReveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 25%;
+    }
+
+    .contact-info .section-subtitle { margin-bottom: 2rem; }
+
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .contact-detail-icon {
+      width: 42px; height: 42px;
+      background: var(--teal-light);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      border: 1px solid rgba(10,191,188,0.2);
+    }
+    .contact-detail-text strong {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 0.2rem;
+    }
+    .contact-detail-text span {
+      font-size: 0.875rem;
+      color: var(--text-mid);
+    }
+
+    .hours-box {
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-top: 2rem;
+      color: #fff;
+    }
+    .hours-box h4 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 1rem;
+    }
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.875rem;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+    }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-row span:last-child { font-weight: 500; }
+
+    /* Contact form */
+    .contact-form-wrap {
+      animation: cardReveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 25%;
+    }
+
+    .contact-form {
+      background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(240,237,231,0.6));
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-card);
+    }
+
+    .contact-form h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+    .contact-form > p {
+      font-size: 0.875rem;
+      color: var(--text-mid);
+      margin-bottom: 1.75rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.1rem;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 0.45rem;
+      letter-spacing: 0.03em;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: var(--white);
+      border: 1.5px solid rgba(26,31,46,0.1);
+      border-radius: 10px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-dark);
+      outline: none;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(10,191,188,0.12);
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--text-light);
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .form-submit {
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    footer {
+      background: var(--text-dark);
+      color: rgba(255,255,255,0.6);
+      padding-block: 2.5rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .footer-brand-icon {
+      width: 34px; height: 34px;
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+    .footer-brand-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .footer-copy {
+      font-size: 0.82rem;
+      text-align: center;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 0.6rem;
+    }
+    .social-icon {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.7);
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .social-icon:hover {
+      background: var(--teal);
+      color: #fff;
+      border-color: var(--teal);
+    }
+
+    /* =============================================
+       SCROLL-TIMELINE ANIMATIONS (modern CSS)
+    ============================================= */
+    @supports (animation-timeline: scroll()) {
+      .section-head {
+        animation: sectionHeadReveal linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 30%;
+      }
+      @keyframes sectionHeadReveal {
+        from { opacity: 0; transform: translateY(30px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+    }
+
+    /* =============================================
+       RESPONSIVE — TABLET
+    ============================================= */
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 3rem;
+        padding-block: 3.5rem;
+      }
+      .hero-tagline, .hero-stats { margin-inline: auto; }
+      .hero-actions { justify-content: center; }
+      .hero-stats { justify-content: center; }
+      .hero-visual { order: -1; }
+
+      .about-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .contact-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+    }
+
+    /* =============================================
+       RESPONSIVE — MOBILE
+    ============================================= */
+    @media (max-width: 640px) {
+      :root { --nav-h: 64px; }
+
+      /* Hamburger */
+      .hamburger-label { display: flex; }
+      .nav-links {
+        position: fixed;
+        top: var(--nav-h);
+        left: 0; right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        background: rgba(248,246,242,0.97);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(10,191,188,0.15);
+        padding: 1rem 1.5rem 1.5rem;
+        gap: 0.25rem;
+        transform: translateY(-8px);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.3s, opacity 0.3s;
+      }
+      .nav-links a {
+        padding: 0.7rem 1rem;
+        border-radius: 10px;
+        font-size: 1rem;
+      }
+      .nav-links .nav-cta {
+        margin-left: 0;
+        text-align: center;
+        margin-top: 0.5rem;
+      }
+
+      .form-row { grid-template-columns: 1fr; }
+
+      .about-visual {
+        grid-template-columns: 1fr 1fr;
+      }
+      .about-card:nth-child(1) { grid-column: 1 / -1; }
+
+      .hero-stats {
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =============================================
+       NAVBAR
+  ============================================= -->
+  <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden />
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+
+      <!-- Logo -->
+      <a href="#home" class="nav-logo" aria-label="Sharan Dental Clinic Home">
+        <div class="nav-logo-icon">🦷</div>
+        <div class="nav-logo-text">
+          <strong>Sharan Dental</strong>
+          <span>Crafting Confident Smiles</span>
+        </div>
+      </a>
+
+      <!-- Desktop & Mobile Nav Links -->
+      <ul class="nav-links" role="list">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact" class="nav-cta">Book Appointment</a></li>
+      </ul>
+
+      <!-- Hamburger -->
+      <label for="nav-toggle" class="hamburger-label" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- =============================================
+         HERO SECTION
+    ============================================= -->
+    <section id="home" class="hero" aria-label="Welcome">
+      <div class="container hero-inner">
+
+        <div class="hero-content">
+          <div class="hero-badge">Now Accepting New Patients</div>
+
+          <h1 class="hero-headline">
+            Your Smile<br/>
+            Deserves<br/>
+            <em>Expert Care</em>
+          </h1>
+
+          <p class="hero-tagline">
+            At Sharan Dental Clinic, we blend cutting-edge dental technology with
+            a gentle, patient-first approach — so every visit feels comfortable,
+            confident, and completely yours.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#contact" class="btn-primary">📅 Book Appointment</a>
+            <a href="#services" class="btn-ghost">Our Services →</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-item">
+              <strong>15+</strong>
+              <span>Years of Excellence</span>
+            </div>
+            <div class="stat-item">
+              <strong>8,500+</strong>
+              <span>Happy Patients</span>
+            </div>
+            <div class="stat-item">
+              <strong>98%</strong>
+              <span>Satisfaction Rate</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero visual card -->
+        <div class="hero-visual">
+          <div class="hero-card-main">
+            <span class="hero-card-icon">🦷</span>
+            <h3>Today's Smile Plan</h3>
+            <p>Personalised treatment crafted just for you.</p>
+
+            <div class="card-progress">
+              <div class="card-progress-label">
+                <span>Oral Health Score</span>
+                <span>92%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width:92%"></div>
+              </div>
+            </div>
+
+            <div class="card-progress" style="margin-top:0.75rem">
+              <div class="card-progress-label">
+                <span>Next Checkup</span>
+                <span>6 months</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width:60%"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="floating-pill pill-1">
+            ✨ Painless Procedures
+          </div>
+          <div class="floating-pill pill-2">
+            ⭐ 5-Star Rated Clinic
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =============================================
+         SERVICES SECTION
+    ============================================= -->
+    <section id="services" class="services" aria-label="Our Services">
+      <div class="container">
+
+        <div class="section-head">
+          <p class="section-label">What We Offer</p>
+          <h2 class="section-title">Comprehensive Dental Care<br/>Under One Roof</h2>
+          <p class="section-subtitle">
+            From routine cleanings to full-mouth rehabilitation, our team of
+            experienced specialists is equipped to care for every smile at every stage.
+          </p>
+        </div>
+
+        <div class="services-grid">
+
+          <div class="service-card">
+            <div class="service-icon">🦷</div>
+            <h3>General Dentistry</h3>
+            <p>Routine check-ups, professional cleanings, cavity fillings, and preventive care to keep your teeth and gums in peak health year-round.</p>
+            <span class="service-tag">Preventive</span>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">✨</div>
+            <h3>Teeth Whitening</h3>
+            <p>Professional-grade whitening treatments that safely lift years of staining, delivering a noticeably brighter smile in a single session.</p>
+            <span class="service-tag">Cosmetic</span>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">😬</div>
+            <h3>Orthodontics</h3>
+            <p>Discreet braces and clear aligner systems to correct misaligned teeth and bite issues, giving you straight teeth and lasting confidence.</p>
+            <span class="service-tag">Alignment</span>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">🔩</div>
+            <h3>Dental Implants</h3>
+            <p>Titanium implants that replicate the look, feel, and function of natural teeth — a permanent, bone-preserving solution for missing teeth.</p>
+            <span class="service-tag">Restorative</span>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">🩺</div>
+            <h3>Root Canal Treatment</h3>
+            <p>Gentle, precision root canal therapy to eliminate deep infection, relieve pain, and preserve your natural tooth without compromise.</p>
+            <span class="service-tag">Endodontics</span>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">💎</div>
+            <h3>Cosmetic Dentistry</h3>
+            <p>Veneers, bonding, smile makeovers — tailored aesthetic procedures that transform your smile while keeping it beautifully natural.</p>
+            <span class="service-tag">Aesthetic</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================
+         ABOUT SECTION
+    ============================================= -->
+    <section id="about" class="about" aria-label="About Sharan Dental Clinic">
+      <div class="container">
+        <div class="about-inner">
+
+          <div class="about-content">
+            <p class="section-label">Our Philosophy</p>
+            <h2 class="section-title">Dentistry Rooted in<br/>Compassion & Precision</h2>
+
+            <p class="section-subtitle about-body">
+              Founded in 2009 by Dr. Ananya Sharan, our clinic was built on a simple
+              belief: every patient deserves to feel heard, cared for, and valued —
+              not just treated. Over 15 years, we have grown into a full-service
+              dental centre, bringing together a multidisciplinary team of specialists
+              who share an unwavering commitment to clinical excellence.
+            </p>
+            <p class="about-body">
+              We invest in the latest diagnostic and treatment technology — including
+              digital X-rays, CEREC same-day crowns, and 3D imaging — so we can
+              provide accurate diagnoses and minimally invasive treatments.
+              But technology is only one part of the story; the other is the warm,
+              unhurried experience every patient receives from the moment they walk
+              through our door.
+            </p>
+
+            <div class="about-pills">
+              <span class="about-pill">BDS &amp; MDS Qualified Specialists</span>
+              <span class="about-pill">Digital X-Ray &amp; 3D Imaging</span>
+              <span class="about-pill">ISO-Certified Sterilisation</span>
+              <span class="about-pill">Child-Friendly Environment</span>
+              <span class="about-pill">Emergency Dental Care</span>
+            </div>
+
+            <a href="#contact" class="btn-primary">Meet Our Team →</a>
+          </div>
+
+          <div class="about-visual">
+            <div class="about-card">
+              <span class="big-icon">🏆</span>
+              <div class="big-num">15+</div>
+              <div class="big-label">Years of Trusted Care</div>
+            </div>
+            <div class="about-card">
+              <span class="big-icon">👨‍⚕️</span>
+              <div class="big-num">12</div>
+              <div class="big-label">Expert Specialists</div>
+            </div>
+            <div class="about-card">
+              <span class="big-icon">😁</span>
+              <div class="big-num">8.5K+</div>
+              <div class="big-label">Smiles Transformed</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================
+         CONTACT SECTION
+    ============================================= -->
+    <section id="contact" class="contact" aria-label="Contact Us">
+      <div class="container">
+        <div class="section-head" style="margin-bottom:3.5rem;">
+          <p class="section-label">Get In Touch</p>
+          <h2 class="section-title">Ready to Transform<br/>Your Smile?</h2>
+          <p class="section-subtitle" style="margin-inline:auto;">
+            Book an appointment, ask a question, or simply say hello.
+            Our friendly team will get back to you within 24 hours.
+          </p>
+        </div>
+
+        <div class="contact-inner">
+
+          <!-- Contact Info -->
+          <div class="contact-info">
+
+            <div class="contact-detail">
+              <div class="contact-detail-icon">📍</div>
+              <div class="contact-detail-text">
+                <strong>Our Location</strong>
+                <span>42, Anna Salai, 2nd Floor, Teynampet<br/>Chennai, Tamil Nadu — 600 018</span>
+              </div>
+            </div>
+
+            <div class="contact-detail">
+              <div class="contact-detail-icon">📞</div>
+              <div class="contact-detail-text">
+                <strong>Phone</strong>
+                <span>+91 98400 12345</span>
+              </div>
+            </div>
+
+            <div class="contact-detail">
+              <div class="contact-detail-icon">📧</div>
+              <div class="contact-detail-text">
+                <strong>Email</strong>
+                <span>care@sharandentalclinic.in</span>
+              </div>
+            </div>
+
+            <div class="contact-detail">
+              <div class="contact-detail-icon">💬</div>
+              <div class="contact-detail-text">
+                <strong>WhatsApp</strong>
+                <span>+91 98400 12345</span>
+              </div>
+            </div>
+
+            <div class="hours-box">
+              <h4>🕐 Clinic Hours</h4>
+              <div class="hours-row"><span>Mon – Fri</span><span>9:00 AM – 8:00 PM</span></div>
+              <div class="hours-row"><span>Saturday</span><span>9:00 AM – 6:00 PM</span></div>
+              <div class="hours-row"><span>Sunday</span><span>10:00 AM – 2:00 PM</span></div>
+            </div>
+
+          </div>
+
+          <!-- Contact Form -->
+          <div class="contact-form-wrap">
+            <div class="contact-form">
+              <h3>Book an Appointment</h3>
+              <p>Fill in the form and we'll confirm your slot by phone or email.</p>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Full Name</label>
+                  <input type="text" id="name" name="name" placeholder="Priya Krishnan" autocomplete="name" />
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone Number</label>
+                  <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" autocomplete="tel" />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="email">Email Address</label>
+                  <input type="email" id="email" name="email" placeholder="priya@email.com" autocomplete="email" />
+                </div>
+                <div class="form-group">
+                  <label for="service">Service Needed</label>
+                  <select id="service" name="service">
+                    <option value="" disabled selected>Select a service</option>
+                    <option>General Check-up</option>
+                    <option>Teeth Whitening</option>
+                    <option>Orthodontics</option>
+                    <option>Dental Implants</option>
+                    <option>Root Canal Treatment</option>
+                    <option>Cosmetic Dentistry</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message / Additional Notes</label>
+                <textarea id="message" name="message" placeholder="Tell us a little about your concern or preferred appointment time…"></textarea>
+              </div>
+
+              <button type="submit" class="btn-primary form-submit">
+                📅 Request Appointment
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =============================================
+       FOOTER
+  ============================================= -->
+  <footer role="contentinfo">
+    <div class="container footer-inner">
+
+      <div class="footer-brand">
+        <div class="footer-brand-icon">🦷</div>
+        <span class="footer-brand-name">Sharan Dental Clinic</span>
+      </div>
+
+      <p class="footer-copy">
+        © 2025 Sharan Dental Clinic. All rights reserved.<br/>
+        <span style="font-size:0.75rem;">Crafting Confident Smiles since 2009 · Chennai, India</span>
+      </p>
+
+      <div class="footer-socials">
+        <a href="#" class="social-icon" aria-label="Facebook">𝑓</a>
+        <a href="#" class="social-icon" aria-label="Instagram">◉</a>
+        <a href="#" class="social-icon" aria-label="Twitter/X">𝕏</a>
+        <a href="#" class="social-icon" aria-label="YouTube">▶</a>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>
